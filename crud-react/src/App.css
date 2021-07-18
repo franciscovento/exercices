@@ -3,3 +3,40 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.App {
+  padding-top: 50px;
+}
+
+.App-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.QuoteItemContainer{
+  background-color: #f4f4f4;
+  margin: 10px 0px;
+  padding: 10px;
+  min-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.formContainer{
+  padding: 10px;
+
+}
+
+.formContainer form {
+  display: flex;
+  gap: 20px;
+}
+
+.formContainer form div label{
+  display: flex;
+  gap: 10px;
+}
+
