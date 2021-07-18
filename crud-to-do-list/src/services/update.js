@@ -1,12 +1,11 @@
 import axios from 'axios'
 
-const updateTask = async (id, isCompleted) =>{
+export const updateTask = async (task) =>{
     const resp = await axios({
         method: 'PUT',
         baseURL: 'https://todos-go.herokuapp.com/api',
-        url: `/todos/${id}`,
-        data: isCompleted
+        url: `/todos/${task.id}`,
+        data: task
     })
-    console.log(resp)
     return resp.data;
 }

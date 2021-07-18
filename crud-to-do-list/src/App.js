@@ -14,6 +14,7 @@ function App() {
 
 const { register, handleSubmit, reset } = useForm();
 const [data, setData] = useState([]);
+const [rendering, setRendering] = useState(false);
 
 
 
@@ -35,24 +36,25 @@ const onDelete = (id) => {
 miFunc()
 }
 
-const onUpdate = (id, isCompleted) => {
-  console.log(id, isCompleted)
-  // const miFunc = async () =>{
-  //   const resp = await updateTask(task)
-  // }
+const onUpdate = (task) => {
+  task.isCompleted = !task.isCompleted
+  const miFunc = async () =>{
+    const resp = await updateTask(task)
+    console.log(resp)
+   setRendering(prevState=> !prevState)
+  }
+  miFunc()
 }
 
   useEffect(() => {
     const getTask = async () =>{
       const data = await read()
       setData(data.todos)
-      console.log(data.todos)
-    
     }
     getTask();
-  },[])
+  },[rendering])
 
-const taskList = data.map(x => <TaskContainer key ={x.id} isCompleted={x.isCompleted.toString()} student={x.student} task={x.task} id={x.id} onDelete={onDelete} onUpdate={onUpdate}  />)
+const taskList = data.map(x => <TaskContainer key ={x.id} isCompleted={x.isCompleted.toString()} student={x.student} task={x.task} id={x.id} onDelete={onDelete} onUpdate={onUpdate} taskCompleted={x} />)
 
   return (
     <div className="App">
