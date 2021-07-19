@@ -54,7 +54,7 @@ const onUpdate = (task) => {
     getTask();
   },[rendering])
 
-const taskList = data.map(x => <TaskContainer key ={x.id} isCompleted={x.isCompleted.toString()} student={x.student} task={x.task} id={x.id} onDelete={onDelete} onUpdate={onUpdate} taskCompleted={x} />)
+const taskList = data.map(x => <TaskContainer key ={x.id} isCompleted={x.isCompleted} student={x.student} task={x.task} id={x.id} onDelete={onDelete} onUpdate={onUpdate} taskCompleted={x} />)
 
   return (
     <div className="App">
@@ -63,8 +63,10 @@ const taskList = data.map(x => <TaskContainer key ={x.id} isCompleted={x.isCompl
         register={register} 
         onCreateTask={onCreateTask} 
         />
-       <br />
-      {taskList}
+        <div className='taskContainer'>
+        {taskList}
+        </div>
+    
     </div>
   );
 }

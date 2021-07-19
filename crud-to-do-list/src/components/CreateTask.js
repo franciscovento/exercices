@@ -6,20 +6,21 @@ const CreateTask = ({handleSubmit, register, onCreateTask}) => {
     return (
         <div className="formContainer">
             <form onSubmit={handleSubmit(onCreateTask)}>
+                <h1>Task Manager</h1>
                 <div>
                     <label>
-                        Students Name:
-                        <input type="text" {...register('student', {required: true})} />
+                        {/* Students Name: */}
+                        <input  placeholder='Student Name' type="text" {...register('student', {required: true})} />
                     </label>
                 </div>
                 <div>
                     <label>
-                        Task:
-                        <input type="text" {...register('task', {required: true})}/>
+                        {/* Task: */}
+                        <input  placeholder='task' type="text" {...register('task', {required: true})}/>
                     </label>
                 </div>
                 <div>
-                    <button type="submit">Crear tarea</button>
+                    <button type="submit">Create Task</button>
                 </div>
             </form>
         </div>
