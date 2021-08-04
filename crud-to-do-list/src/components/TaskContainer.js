@@ -10,6 +10,7 @@ function TaskContainer({isCompleted, student, task, id, onDelete, onUpdate, task
   return (
     <div className='taskContainerElement'>
       <div>
+      <div>
       {isCompleted ? <h5 className='TaskCompleted'>Completed</h5>: <h5 className='taskPending' >In process</h5> }
       </div>
       <div className='taskContainerElement__content'>
@@ -21,6 +22,7 @@ function TaskContainer({isCompleted, student, task, id, onDelete, onUpdate, task
         <button onClick={() => {onUpdate(taskCompleted)}}> {checkButton}</button>
         <button onClick={() => {onDelete(id)}}>{trashButton} </button>
         </div>
+      </div>
       </div>
     </div>
   )

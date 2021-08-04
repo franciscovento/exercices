@@ -66,7 +66,6 @@ const taskList = data.map(x => <TaskContainer key ={x.id} isCompleted={x.isCompl
         <div className='taskContainer'>
         {taskList}
         </div>
-    
     </div>
   );
 }
