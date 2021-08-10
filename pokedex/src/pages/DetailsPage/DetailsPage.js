@@ -2,8 +2,6 @@ import '../DetailsPage/detailsPage.scss'
 
 const DetailsPage = () => {
   
-
-
   return (
     <div>
 

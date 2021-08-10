@@ -4,6 +4,7 @@ import getInfo from '../../services/getInfo'
 import CardPokemon from '../../components/cardPokemon/CardPokemon';
 import Pagination from '../../components/pagination/Pagination';
 import axios from 'axios'
+import FormSearcher from '../../components/formSearcher/FormSearcher';
 
 const SearchPage = ({user, getPokemonSelected}) => {
 
@@ -65,21 +66,7 @@ const goToPrevPage = ()=> {
         <h3 className='user'> Master: {user} </h3> 
         <button className='logoutbutton'>Logout</button>
         <h1>Busca el pokemón</h1>
-        <form className='form'>
-          <div className='inputButtonContainer'>
-            <input type="text" placeholder='Escribe el nombre del pokemón' />
-            <button type='submit'>Buscar</button>
-          </div>
-          <select name="types" id="select">
-            <option value="Grass">All</option>
-            <option value="Grass">Grass</option>
-            <option value="Grass">Grass</option>
-            <option value="Grass">Grass</option>
-            <option value="Grass">Grass</option>
-            <option value="Grass">Grass</option>
-          </select>
-        </form>
-        
+        <FormSearcher />
         <div className='sectionCard'>
         {allPokemon.map((pokemon, index) => 
         <CardPokemon 
