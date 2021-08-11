@@ -6,7 +6,7 @@ import Pagination from '../../components/pagination/Pagination';
 import axios from 'axios'
 import FormSearcher from '../../components/formSearcher/FormSearcher';
 
-const SearchPage = ({user, getPokemonSelected}) => {
+const SearchPage = ({user}) => {
 
 
 const [pokedata, setPokeData] = useState([]);
@@ -16,9 +16,6 @@ const [prevPage, setPrevPage] = useState();
 const [loading, setLoading] = useState(true);
 const [allPokemon, setAllPokemon] = useState([]);
 
-const miFunc = (name) => {
-  getPokemonSelected(name)
-}
 
 
 useEffect(()=>{
@@ -40,6 +37,7 @@ useEffect(()=>{
       results.forEach( async (pokemon) => {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
         setAllPokemon(prev => [...prev, response.data]);
+   
       }) 
     }
     createPokemonObject(pokedata)
@@ -70,7 +68,6 @@ const goToPrevPage = ()=> {
         <div className='sectionCard'>
         {allPokemon.map((pokemon, index) => 
         <CardPokemon 
-        miFunc={miFunc}
         id={pokemon.id}
         name={pokemon.name}  
         image={pokemon.sprites.other.dream_world.front_default}

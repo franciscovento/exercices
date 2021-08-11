@@ -2,13 +2,13 @@ import '../cardPokemon/cardPokemon.scss'
 import {Link} from 'react-router-dom'
 
 
-const CardPokemon = ({id, name, image, type, miFunc}) => {
+const CardPokemon = ({id, name, image, type}) => {
 
     let styles = `cardPokemon ${type}`
  
 
   return (
-    <Link to={name} onClick={()=> {miFunc(name)}}>
+    <Link to={`details/${name}`}>
     <div className='containerCard' >
         <div className={styles}>
         <p>#{id}</p>
