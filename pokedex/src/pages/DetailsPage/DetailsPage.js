@@ -7,7 +7,8 @@ import StatsPoke from '../../components/stats/StatsPoke';
 
 
 const DetailsPage = () => {
-  
+
+
 const [pokemonDetails, setPokemonDetails] = useState(undefined);
 const [stylesType, setStylesType] = useState();
 const {pokemon} = useParams()
