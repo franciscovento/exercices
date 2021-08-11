@@ -1,5 +1,5 @@
 import '../DetailsPage/detailsPage.scss'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import StatsPoke from '../../components/stats/StatsPoke';
@@ -62,13 +62,17 @@ if (pokemonDetails) {
      </div> 
      <div className='typeStats'>
        <p>Types → {pokemonDetails[0].types.map((x,index)=> <span key={index}>{index + 1}: {x.type.name} </span> )}</p>
-       
      </div>
+     <Link to='/search'><button>Volver</button></Link>
      
 
    </div>
      : 
-     'Parece que el pokemón que buscas no existe :( ...'}
+     <div className='menssageError'>
+        Parece que el pokemón que buscas no existe ...
+          <Link to='/search'><button>Volver</button></Link>
+     </div>
+     }
     
     </div>
   )

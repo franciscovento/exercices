@@ -13,7 +13,6 @@
 
   &.fire {
     background-color: #e3655b;
-    color: white;
   }
 
   &.normal {
@@ -30,7 +29,6 @@
 
   &.poison {
     background-color: #6761a8;
-    color: white;
   }
 
   &.electric {
@@ -146,5 +144,26 @@
       bottom: 30px;
       right: 30px;
     }
+
+    a {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+    }
+  }
+}
+
+.menssageError {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  flex-direction: column;
+  text-align: center;
+
+  a {
+    margin-top: 20px;
   }
 }
