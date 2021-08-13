@@ -34,7 +34,7 @@
     justify-content: center;
 
     input {
-      font-size: 55px;
+      font-size: 45px;
       width: 700px;
       border: none;
       padding-left: 10px;
@@ -49,14 +49,14 @@
     @media (max-width: 740px) {
       input {
         width: 600px;
-        font-size: 45px;
+        font-size: 35px;
       }
     }
 
     @media (max-width: 640px) {
       input {
         width: 500px;
-        font-size: 35px;
+        font-size: 25px;
       }
     }
 
@@ -69,7 +69,7 @@
 
     @media (max-width: 450px) {
       input {
-        width: 260px;
+        width: 300px;
         font-size: 20px;
       }
     }

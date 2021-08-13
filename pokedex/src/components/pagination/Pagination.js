@@ -1,4 +1,4 @@
-import '../pagination/pagination.scss'
+import '../pagination/pagination.css'
 const Pagination = ({goToPrevPage, goToNextPage}) => {
   return (
     <div className='paginationContainer'>

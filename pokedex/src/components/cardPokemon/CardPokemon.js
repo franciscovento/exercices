@@ -1,4 +1,4 @@
-import '../cardPokemon/cardPokemon.scss'
+import '../cardPokemon/cardPokemon.css'
 import {Link} from 'react-router-dom'
 
 

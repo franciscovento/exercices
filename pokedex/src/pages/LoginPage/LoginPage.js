@@ -1,5 +1,5 @@
 import ButtonPrimary from '../../components/button/ButtonPrimary.js'
-import '../LoginPage/loginPage.scss'
+import '../LoginPage/loginPage.css'
 
 let backGrounds = {
   0: 'https://tomategrafico.com/assetstmt/bulbasor.png',

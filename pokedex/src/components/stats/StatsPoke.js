@@ -1,4 +1,4 @@
-import '../stats/statsPoke.scss'
+import '../stats/statsPoke.css'
 
 const StatsPoke = ({title, content}) => {
   return (

@@ -1,4 +1,4 @@
-import '../SearchPage/searchPage.scss'
+import '../SearchPage/searchPage.css'
 import { useEffect, useState } from 'react'
 import getInfo from '../../services/getInfo'
 import CardPokemon from '../../components/cardPokemon/CardPokemon';
@@ -53,6 +53,7 @@ const goToPrevPage = ()=> {
   setCurrentPage(prevPage);
   setAllPokemon([]);
 }
+
   
   return (
     <div className='searchPage' >

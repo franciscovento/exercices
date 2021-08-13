@@ -1,4 +1,4 @@
-import './app.scss';
+import './app.css';
 import DetailsPage from './pages/DetailsPage/DetailsPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SearchPage from './pages/SearchPage/SearchPage';
@@ -31,6 +31,9 @@ setUser(e.target.value)
             </Route>
             <Route exact path='/details' >
             <Redirect to='/search' />
+            </Route>
+            <Route path='*'>
+              Error 404
             </Route>
         </Switch>
       </Router>

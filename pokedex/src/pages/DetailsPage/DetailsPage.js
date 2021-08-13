@@ -1,4 +1,4 @@
-import '../DetailsPage/detailsPage.scss'
+import '../DetailsPage/detailsPage.css'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
