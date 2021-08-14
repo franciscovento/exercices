@@ -45,7 +45,7 @@ const FormSearcher = () => {
     <div className='form'>
       <div className='inputButtonContainer'>
         <input type="text" placeholder='Escribe el nombre del pokemón'  onChange={getQuerySearch} value={search} />
-        <div className='sugesstionsContainer'>{suggestionsPokemons && suggestionsPokemons.slice(0,12).map((x, i) => <Link key = {i} to={`details/${x.name}`}>{x.name}</Link> )}</div>
+        <div className='sugesstionsContainer'> <span>sugerencias: </span> {suggestionsPokemons && suggestionsPokemons.slice(0,12).map((x, i) => <Link key = {i} to={`details/${x.name}`}>{x.name}</Link> )}</div>
       </div>
       <select name="types" id="select">
       <option value="">All</option>

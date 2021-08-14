@@ -25,7 +25,6 @@ useEffect(()=>{
       types: res.data.types,
       id: res.data.id
     }]
-  console.log(data)
   setPokemonDetails(data);
   
 };

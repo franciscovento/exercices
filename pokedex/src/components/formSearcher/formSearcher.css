@@ -39,6 +39,21 @@
   min-height: 50px;
 }
 
+.form .inputButtonContainer .sugesstionsContainer span {
+  font-size: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
 .form .inputButtonContainer .sugesstionsContainer a {
   margin-right: 10px;
   margin-bottom: 5px;
@@ -55,7 +70,7 @@
 }
 
 .form select {
-  margin-top: 5px;
+  margin-top: 10px;
   width: 300px;
 }
 /*# sourceMappingURL=formSearcher.css.map */

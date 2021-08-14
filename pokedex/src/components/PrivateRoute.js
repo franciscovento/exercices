@@ -1,9 +1,12 @@
-import { Route } from "react-router-dom"
+import { Redirect, Route } from "react-router-dom"
 
 
-const PrivateRoute = (props) => {
-  return <Route exact={props.exact} path={props.path} component={props.component
-} />
+const PrivateRoute = ({component: Component, user, ...rest}) => {
+  return <Route {...rest}>
+        {user? <Component user={user}/> : <Redirect to='/'/> }
+        </Route>
 }
+
+
 
 export default PrivateRoute

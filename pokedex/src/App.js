@@ -4,10 +4,11 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import { useState } from 'react';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
-  const [user, setUser] = useState()
+  const [user, setUser] = useState(null)
  
 const handleChange = (e) =>{
 setUser(e.target.value)
@@ -22,16 +23,17 @@ setUser(e.target.value)
             <Route exact path='/' >
             <LoginPage handleChange={handleChange} />
             </Route>
-            <Route exact path='/search' >
+            {/* <Route exact path='/search' >
             <SearchPage 
             user={user} />
-            </Route>
+            </Route> */}
             <Route exact path={`/details/:pokemon`} >
             <DetailsPage />
             </Route>
             <Route exact path='/details' >
             <Redirect to='/search' />
             </Route>
+            <PrivateRoute exact path='/search' user={user} component={SearchPage} />
             <Route path='*'>
               Error 404
             </Route>
