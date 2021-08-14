@@ -13,13 +13,13 @@ let randomNum = Math.round(Math.random() * (4 - 0) + 0);
 let randomBg = `url(${backGrounds[randomNum]})`
 
 
-const LoginPage = ({handleChange}) => {
+const LoginPage = ({setLocalStorage}) => {
 
   return ( 
     <div className='loginPage' style={{backgroundImage: randomBg}}>
       <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" alt="" />
         <form >
-          <input type="text" placeholder='Ingresa tu nombre para empezar...' onChange={handleChange}  />
+          <input type="text" placeholder='Ingresa tu nombre para empezar...' onChange={setLocalStorage}  />
           <ButtonPrimary to={'/search'} text={'Ingresar'}/>
         </form>
       <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" alt="" />
