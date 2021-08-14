@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 const FormSearcher = () => {
 
   const [valueTypes, setValueTypes] = useState([]);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState('');
+  const [pokemonsName, setPokemonsName] = useState([]);
+  const [suggestionsPokemons, setSuggestionsPokemons] = useState([]); 
 
   useEffect(() => {
     const getValueInfo = async () => {
       let data = await axios.get('https://pokeapi.co/api/v2/type')
-      console.log(data.data.results)
       setValueTypes(data.data.results);
     }
     getValueInfo();
@@ -18,22 +19,39 @@ const FormSearcher = () => {
 
   const list = valueTypes.map((x, index) => <option key={index} value={x.name}>{x.name}</option>)
 
+
+
+  useEffect(()=>{
+    const getSugestions = async () =>{
+      let data = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1118');
+      setPokemonsName(data.data.results);
+    }
+    getSugestions();
+  },[])
+
   const getQuerySearch = (e) => {
+    let matches = [];
+    if (search.length > 0) {
+      matches = pokemonsName.filter( pokemons => {
+        const regex = new RegExp(`${search}`, 'gi')
+        return pokemons.name.match(regex);
+      })
+    }
+    setSuggestionsPokemons(matches)
     setSearch(e.target.value)
   }
 
-
   return (
-    <form className='form'>
+    <div className='form'>
       <div className='inputButtonContainer'>
-        <input type="text" placeholder='Escribe el nombre del pokemón' onChange={getQuerySearch} />
-        <Link to={`details/${search}`}>Buscar</Link>
+        <input type="text" placeholder='Escribe el nombre del pokemón'  onChange={getQuerySearch} value={search} />
+        <div className='sugesstionsContainer'>{suggestionsPokemons && suggestionsPokemons.slice(0,12).map((x, i) => <Link key = {i} to={`details/${x.name}`}>{x.name}</Link> )}</div>
       </div>
       <select name="types" id="select">
       <option value="">All</option>
       {list}
     </select>
-    </form>
+    </div>
   )
 }
 

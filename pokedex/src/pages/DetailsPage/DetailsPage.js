@@ -70,7 +70,7 @@ if (pokemonDetails) {
    </div>
      : 
      <div className='menssageError'>
-        Parece que el pokemón que buscas no existe ...
+        Cargando información...
           <Link to='/search'><button>Volver</button></Link>
      </div>
      }
