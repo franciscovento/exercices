@@ -17,6 +17,7 @@
 
 .statsPoke p {
   font-weight: bold;
+  color: black;
 }
 
 .statsPoke p span {

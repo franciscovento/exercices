@@ -7,14 +7,23 @@ import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
-  const [user, setUser] = useState(null)
- 
-const handleChange = (e) =>{
-setUser(e.target.value)
-} 
+  const [user, setUser] = useState(window.localStorage.getItem('user'))
+
+const setLocalStorage = e =>{
+  try{
+    setUser(e.target.value)
+    window.localStorage.setItem('user', e.target.value)
+  } catch(error){
+    console.log(error)
+  }
+  
+}
+
+
 
 const logout = () =>{
   setUser(null);
+  window.localStorage.clear()
 }
 
 
@@ -23,7 +32,7 @@ const logout = () =>{
       <Router>
         <Switch>
             <Route exact path='/' >
-            <LoginPage handleChange={handleChange} />
+            <LoginPage setLocalStorage={setLocalStorage} />
             </Route>
             <PrivateRoute path='/search' user={user} component={SearchPage} logout={logout} />
             <Route path='*'>
