@@ -5,8 +5,13 @@ import CardPokemon from '../../components/cardPokemon/CardPokemon';
 import Pagination from '../../components/pagination/Pagination';
 import axios from 'axios'
 import FormSearcher from '../../components/formSearcher/FormSearcher';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import DetailsPage from '../DetailsPage/DetailsPage';
 
-const SearchPage = ({user}) => {
+const SearchPage = ({user, logout}) => {
+
+const {path} = useRouteMatch();
+
 
 
 const [pokedata, setPokeData] = useState([]);
@@ -56,34 +61,40 @@ const goToPrevPage = ()=> {
 
   
   return (
-    <div className='searchPage' >
-      {
-      
-      loading ? <div className='loading'>loading...</div> : 
+   <Switch>
+      <Route exact path={`${path}/:pokemon`} >
+            <DetailsPage/>
+      </Route>
+     <Route path={path}>
+     <div className='searchPage' >
+    {
+    
+    loading ? <div className='loading'>loading...</div> : 
 
-      <div className='searchPageContainer'>
-        <h3 className='user'> Master: {user} </h3> 
-        <button className='logoutbutton'>Logout</button>
-        <h1>Busca el pokemón</h1>
-        <FormSearcher />
-        <div className='sectionCard'>
-        {allPokemon.map((pokemon, index) => 
-        <CardPokemon 
-        id={pokemon.id}
-        name={pokemon.name}  
-        image={pokemon.sprites.other.dream_world.front_default}
-        type={pokemon.types[0].type.name}
-        key={index}
-        /> 
-        )}
-        </div>
-        <Pagination 
-        goToNextPage={nextPage? goToNextPage: null} 
-        goToPrevPage={prevPage? goToPrevPage: null} />
+    <div className='searchPageContainer'>
+      <h3 className='user'> Master: {user} </h3> 
+      <button onClick={logout} className='logoutbutton'>Logout</button>
+      <h1>Busca el pokemón</h1>
+      <FormSearcher />
+      <div className='sectionCard'>
+      {allPokemon.map((pokemon, index) => 
+      <CardPokemon 
+      id={pokemon.id}
+      name={pokemon.name}  
+      image={pokemon.sprites.other.dream_world.front_default}
+      type={pokemon.types[0].type.name}
+      key={index}
+      /> 
+      )}
       </div>
-      }
-        
+      <Pagination 
+      goToNextPage={nextPage? goToNextPage: null} 
+      goToPrevPage={prevPage? goToPrevPage: null} />
     </div>
+    }
+  </div>
+     </Route>
+   </Switch>
   )
 }
 

@@ -1,14 +1,15 @@
 import '../cardPokemon/cardPokemon.css'
-import {Link} from 'react-router-dom'
+import {Link, useRouteMatch} from 'react-router-dom'
+
 
 
 const CardPokemon = ({id, name, image, type}) => {
-
+let {url} = useRouteMatch();
     let styles = `cardPokemon ${type}`
  
 
   return (
-    <Link to={`details/${name}`}>
+    <Link to={`${url}/${name}`}>
     <div className='containerCard' >
         <div className={styles}>
         <p>#{id}</p>
