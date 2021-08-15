@@ -83,7 +83,6 @@ if (typeSelected) {
       data.data.pokemon.forEach(x => {
         array.push(x.pokemon)
       })
-      console.log(array)
       setRange(Math.ceil(array.length / 20));
       setAllPokemon([]);
       setNextPage();
