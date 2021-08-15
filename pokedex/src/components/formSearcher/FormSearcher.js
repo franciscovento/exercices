@@ -2,7 +2,7 @@ import '../formSearcher/formSearcher.css'
 import axios from 'axios';
 import { useEffect, useState } from 'react'
 import { Link, useRouteMatch } from 'react-router-dom';
-const FormSearcher = () => {
+const FormSearcher = ({handleChangueSelect}) => {
  let {url} = useRouteMatch();
  
 
@@ -17,12 +17,12 @@ const FormSearcher = () => {
       setValueTypes(data.data.results);
     }
     getValueInfo();
+    
   }, [])
 
   const list = valueTypes.map((x, index) => <option key={index} value={x.name}>{x.name}</option>)
 
-
-
+ 
   useEffect(()=>{
     const getSugestions = async () =>{
       let data = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1118');
@@ -43,16 +43,17 @@ const FormSearcher = () => {
     setSearch(e.target.value)
   }
 
+ 
   return (
     <div className='form'>
       <div className='inputButtonContainer'>
         <input type="text" placeholder='Escribe el nombre del pokemón'  onChange={getQuerySearch} value={search} />
         <div className='sugesstionsContainer'> <span>sugerencias: </span> {suggestionsPokemons && suggestionsPokemons.slice(0,12).map((x, i) => <Link key = {i} to={`${url}/${x.name}`}>{x.name}</Link> )}</div>
       </div>
-      <select name="types" id="select">
-      <option value="">All</option>
-      {list}
-    </select>
+        <select onChange={handleChangueSelect} name="types" id="select">
+          <option value="all">All</option>
+          {list}
+        </select>
     </div>
   )
 }
