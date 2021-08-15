@@ -178,6 +178,10 @@
   left: 30px;
 }
 
+.detailsPageContainer .infoContainer a button {
+  padding: 5px;
+}
+
 .menssageError {
   width: 100%;
   height: 100vh;
