@@ -20,6 +20,11 @@ const [nextPage, setNextPage] = useState();
 const [prevPage, setPrevPage] = useState();
 const [loading, setLoading] = useState(true);
 const [allPokemon, setAllPokemon] = useState([]);
+const [typeSelected, setTypeSelected] = useState(null);
+const [offset, setOffset] = useState(0);
+const [prevButton, setPrevBUtton] = useState(null);
+const [nextButton, setNextButtton] = useState(null);
+const [range, setRange] = useState(null);
 
 
 
@@ -42,7 +47,7 @@ useEffect(()=>{
       results.forEach( async (pokemon) => {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
         setAllPokemon(prev => [...prev, response.data]);
-   
+        
       }) 
     }
     createPokemonObject(pokedata)
@@ -59,7 +64,64 @@ const goToPrevPage = ()=> {
   setAllPokemon([]);
 }
 
+const handleChangueSelect = (e) => {
+  setTypeSelected(e.target.value);
+  setOffset(0);
+}
+
+let limit = 20;
+
+useEffect(()=>{
+if (typeSelected) {
+  if(typeSelected === 'all'){
+    window.location.reload();
+
+  }else{
+    const getInfo = async () => {
+      let data = await axios.get(`https://pokeapi.co/api/v2/type/${typeSelected}`)
+      let array = [];
+      data.data.pokemon.forEach(x => {
+        array.push(x.pokemon)
+      })
+      console.log(array)
+      setRange(Math.ceil(array.length / 20));
+      setAllPokemon([]);
+      setNextPage();
+      setPrevPage();
+      setPokeData(array.slice(offset * limit , limit * (offset +1) ));
+    }
+    getInfo();
+  }
   
+}
+
+},[typeSelected, limit, offset])
+  
+
+const handleTypeNext = () => {
+  setOffset(prev => prev + 1)
+}
+
+const handleTypePrev = () => {
+  setOffset(prev => prev -1)
+}
+
+useEffect(()=> {
+if (offset === 0) {
+  setPrevBUtton(null)
+} else{
+  setPrevBUtton(true)
+}
+
+if (offset >= range) {
+  setNextButtton(null)
+} else{
+  setNextButtton(true)
+}
+
+
+},[offset, range])
+
   return (
    <Switch>
       <Route exact path={`${path}/:pokemon`} >
@@ -75,7 +137,7 @@ const goToPrevPage = ()=> {
       <h3 className='user'> Master: {user} </h3> 
       <button onClick={logout} className='logoutbutton'>Logout</button>
       <h1>Busca el pokemón</h1>
-      <FormSearcher />
+      <FormSearcher handleChangueSelect={handleChangueSelect} />
       <div className='sectionCard'>
       {allPokemon.map((pokemon, index) => 
       <CardPokemon 
@@ -87,6 +149,14 @@ const goToPrevPage = ()=> {
       /> 
       )}
       </div>
+
+        {range? 
+          <div className='buttonsContainerTypeNext'>
+          {prevButton? <button onClick={handleTypePrev}>Prev</button>: ''}
+          {nextButton? <button onClick={handleTypeNext}>Next</button>: ''}
+          </div>
+          : ''}
+  
       <Pagination 
       goToNextPage={nextPage? goToNextPage: null} 
       goToPrevPage={prevPage? goToPrevPage: null} />

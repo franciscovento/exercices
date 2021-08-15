@@ -21,6 +21,7 @@
 
 .detailsPageContainer.fire {
   background-color: #e3655b;
+  color: white;
 }
 
 .detailsPageContainer.normal {
@@ -37,6 +38,7 @@
 
 .detailsPageContainer.poison {
   background-color: #6761a8;
+  color: white;
 }
 
 .detailsPageContainer.electric {
@@ -57,10 +59,12 @@
 
 .detailsPageContainer.psychic {
   background-color: #7a7978;
+  color: white;
 }
 
 .detailsPageContainer.rock {
   background-color: #8d99ae;
+  color: white;
 }
 
 .detailsPageContainer.ghost {
@@ -176,6 +180,10 @@
   position: absolute;
   bottom: 30px;
   left: 30px;
+}
+
+.detailsPageContainer .infoContainer a button {
+  padding: 5px;
 }
 
 .menssageError {

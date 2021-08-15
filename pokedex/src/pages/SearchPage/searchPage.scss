@@ -35,5 +35,17 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
+    .buttonsContainerTypeNext {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: auto;
+      button {
+        width: 150px;
+        font-size: 20px;
+        margin: 10px;
+      }
+    }
   }
 }

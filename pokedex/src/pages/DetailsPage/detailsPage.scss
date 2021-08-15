@@ -13,6 +13,7 @@
 
   &.fire {
     background-color: #e3655b;
+    color: white;
   }
 
   &.normal {
@@ -29,6 +30,7 @@
 
   &.poison {
     background-color: #6761a8;
+    color: white;
   }
 
   &.electric {
@@ -49,10 +51,12 @@
 
   &.psychic {
     background-color: #7a7978;
+    color: white;
   }
 
   &.rock {
     background-color: #8d99ae;
+    color: white;
   }
 
   &.ghost {
@@ -150,6 +154,10 @@
       position: absolute;
       bottom: 30px;
       left: 30px;
+
+      button {
+        padding: 5px;
+      }
     }
   }
 }
